@@ -28,5 +28,9 @@
     "https://doi.org/10.1007/s12021-017-9334-0",
     "http://www.nitrc.org/projects/validate29"
   ],
-  "RRID": "SCR_015542"
+  "RRID": "SCR_015542",
+  "Species": [
+    "Saimiri sciureus",
+    "Saimiri boliviensis"
+  ]
 }
