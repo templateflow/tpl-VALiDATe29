@@ -1,14 +1,20 @@
-
-name: Update Super-Dataset
+# This file should be a copy from the templateflow/gha-workflow-superdataset repository
+# PLEASE DO NOT MODIFY IT MANUALLY
+# That said, there's no automated way to update the script (i.e., if the source of this file
+# is modified at the gha-workflow-superdataset repo).
+name: Sync with G-Node, update Superdataset and export to S3
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
+  workflow_dispatch:
 
 jobs:
   update_superdataset:
     runs-on: ubuntu-latest
     steps:
-      - name: "Update TemplateFlow's superdataset"
-        uses: templateflow/actions-template@main
+      - name: "Sync with GIN, update TemplateFlow's superdataset and export to S3"
+        uses: templateflow/actions-template@fix/gin-ssh-s3-export
         env:
-          SECRET_KEY: ${{ secrets.NIPREPS_BOT }}
+          SECRET_KEY: ${{ secrets.TEMPLATEFLOW_SSH_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
